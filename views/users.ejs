@@ -1,0 +1,15 @@
+<h1>Community!</h1>
+
+<% users.forEach(function(user) { %>
+  <div class="well col-sm-6">
+    <h2>
+      <a href="/users/<%= user.id %>">
+        <%= user.name %>
+      </a>
+    </h2>
+  </div>
+<% }); %>
+
+<hr />
+
+<a href="/">&larr; Back Home</a>

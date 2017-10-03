@@ -53,8 +53,23 @@ app.post('/search', function(req, res) {
 	})
 })
 
+app.get('/users', isLoggedIn, function(req, res) {
+	db.user.findAll().then(function(users) {
+		res.render('users', {users: users});
+	})
+})
+
+app.get('/users/:id', isLoggedIn, function(req, res) {
+	db.user.find({
+		where: {id: req.params.id}
+	})
+	.then(function(user) {
+		res.render('userinfo', {user: user});
+	})
+})
+
 app.get('/profile', isLoggedIn, function(req, res) {
-  res.render('profile');
+	res.render('profile');
 });
 
 app.use('/auth', require('./controllers/auth'));
