@@ -1,0 +1,10 @@
+  <% gym.forEach(function(gym) { %>
+    <div class="well">
+      <h2><strong><%= gym.name %></strong> <em>(<%= gym.rating %> / 5)</em></h2>
+      <p><%= gym.formatted_address %></p>
+      <form method="POST" action="/">
+        <input hidden type="text" name="name" value="<%= gym.name %>">
+        <button class="btn btn-primary" type="submit">Follow</button>
+      </form>
+    </div>
+  <% }); %>

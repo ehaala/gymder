@@ -1,0 +1,23 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #8FBC8F;
+	color: black;
+	font-weight: lighter;
+	font-family: Gruppo;
+	font-size: 20px;
+}
+
+.navbar-default {
+	background: #8FBC8F;
+	border: none;
+	color: lime;
+}
+
+th {
+	font-weight: bold;
+}
+
+.well {
+	background: white;
+}

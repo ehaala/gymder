@@ -3,6 +3,8 @@ var router = express.Router();
 var db = require('../models');
 var passport = require('../config/ppConfig');
 
+
+
 router.get('/signup', function(req, res) {
   res.render('auth/signup');
 });

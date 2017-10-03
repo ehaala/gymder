@@ -1,8 +1,11 @@
 require('dotenv').config();
 var express = require('express');
+var request = require('request');
 var ejsLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var app = express();
+var path = require('path');
+var db = require('./models');
 
 var session = require('express-session');
 var flash = require('connect-flash');
@@ -13,18 +16,8 @@ app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
+app.use(express.static(path.join(__dirname, 'public')));
 
-/*
- * setup the session with the following:
- * 
- * secret: A string used to "sign" the session ID cookie, which makes it unique
- * from application to application. We'll hide this in the environment
- *
- * resave: Save the session even if it wasn't modified. We'll set this to false
- *
- * saveUninitialized: If a session is new, but hasn't been changed, save it.
- * We'll set this to true.
- */
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -46,8 +39,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', function(req, res) {
-  res.render('index');
+	res.render('home');
 });
+
+app.post('/search', function(req, res) {
+	var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=gyms+in+';
+	var city = req.body.city;
+	var key = '&key=AIzaSyCQH1Sui6szIjsZDawHKRqomT-5liiLJU4';
+	var fullurl = url + city + key;
+	request(fullurl, function(error, response, body) {
+		var gym = JSON.parse(body).results;
+		res.render('search', {gym: gym});
+	})
+})
 
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');
