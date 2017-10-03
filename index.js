@@ -68,6 +68,36 @@ app.get('/users/:id', isLoggedIn, function(req, res) {
 	})
 })
 
+app.get('/following', isLoggedIn, function(req, res) {
+	db.gym.findAll().then(function(result) {
+		res.render('following', {result: result});
+	})
+})
+
+app.post('/following', isLoggedIn, function(req, res) {
+	db.gym.create({
+		name: req.body.name
+	}).then(function() {
+		res.redirect('/following');
+	})
+})
+
+app.delete('/following/:name', isLoggedIn, function(req, res) {
+	db.gym.destroy({
+		where: {name: req.params.name}
+	}).then(function() {
+		//
+	})
+})
+
+app.get('/following/:name', isLoggedIn, function(req, res) {
+	db.gym.find({
+		where: {name: req.params.name}
+	}).then(function(gym) {
+		res.render('gyminfo', {gym: gym})
+	})
+})
+
 app.get('/profile', isLoggedIn, function(req, res) {
 	res.render('profile');
 });

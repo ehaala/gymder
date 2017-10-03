@@ -2,7 +2,7 @@
     <div class="well col-sm-6">
       <h2><strong><%= gym.name %></strong> <em>(<%= gym.rating %> / 5)</em></h2>
       <p><%= gym.formatted_address %></p>
-      <form method="POST" action="/">
+      <form method="POST" action="/following">
         <input hidden type="text" name="name" value="<%= gym.name %>">
         <button class="btn btn-primary" type="submit">Follow</button>
       </form>

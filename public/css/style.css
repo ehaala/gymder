@@ -28,6 +28,10 @@ input {
 	text-align: center;
 }
 
+textarea {
+	background: black;
+}
+
 th {
 	font-weight: bold;
 }
@@ -52,8 +56,14 @@ th {
 }
 
 .well {
-	background: black;
+	background-image: url('../img/woodback.jpg');
+	background-size: cover;
 	height: 250px;
+}
+
+.user {
+	background: black;
+	height: 100px;
 }
 
 .search {
