@@ -74,12 +74,27 @@ app.get('/following', isLoggedIn, function(req, res) {
 	})
 })
 
+// app.post('/following', isLoggedIn, function(req, res) {
+// 	db.gym.create({
+// 		name: req.body.name
+// 	}).then(function() {
+// 		res.redirect('/following');
+// 	})
+// })
+
 app.post('/following', isLoggedIn, function(req, res) {
-	db.gym.create({
-		name: req.body.name
-	}).then(function() {
-		res.redirect('/following');
+	db.user.find({
+		where: {name: req.user.name}
+	}).then(function(user) {
+		db.gym.findOrCreate({
+			where: {name: req.body.name}
+		}).spread(function(gym, created) {
+			user.addGym(gym).then(function(gym) {
+				//
+			})
+		})
 	})
+	res.redirect('/following');
 })
 
 app.delete('/following/:name', isLoggedIn, function(req, res) {
