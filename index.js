@@ -129,6 +129,10 @@ app.get('/following/:name', isLoggedIn, function(req, res) {
 	})
 })
 
+app.get('/about', function(req, res) {
+	res.render('about');
+})
+
 app.get('/profile', isLoggedIn, function(req, res) {
 	res.render('profile', {user: req.user});
 });
