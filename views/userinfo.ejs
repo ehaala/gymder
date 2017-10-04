@@ -6,7 +6,7 @@
 <div>
 	<% gyms.forEach(function(gym) {%>
 		<div class="following">
-		<a href="/following/<%-gym.name %>"><h3><%= gym.name %></h3></a>
+		<a href="/following/<%-gym.name %>"><%= gym.name %></a>
 		</div>
 	<% });%>
 </div>
