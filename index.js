@@ -69,8 +69,12 @@ app.get('/users/:id', isLoggedIn, function(req, res) {
 })
 
 app.get('/following', isLoggedIn, function(req, res) {
-	db.gym.findAll().then(function(result) {
-		res.render('following', {result: result});
+	db.user.findOne({
+		where: {name: req.user.name}
+	}).then(function(user) {
+		user.getGyms().then(function(gyms) {
+			res.render('following', {gyms: gyms});
+		});
 	})
 })
 

@@ -1,7 +1,7 @@
 <h1>Gyms I follow...</h1>
 
 <div>
-	<% result.forEach(function(gym) {%>
+	<% gyms.forEach(function(gym) {%>
 		<div class="following">
 		<a href="/following/<%= gym.name %>"><h3><%= gym.name %></h3></a>
 		<a href="/following/<%-gym.name %>" type="submit" class="btn btn-danger remove">Unfollow</a>
