@@ -59,12 +59,22 @@ app.get('/users', isLoggedIn, function(req, res) {
 	})
 })
 
+// app.get('/users/:id', isLoggedIn, function(req, res) {
+// 	db.user.find({
+// 		where: {id: req.params.id}
+// 	})
+// 	.then(function(user) {
+// 		res.render('userinfo', {user: user});
+// 	})
+// })
+
 app.get('/users/:id', isLoggedIn, function(req, res) {
-	db.user.find({
+	db.user.findOne({
 		where: {id: req.params.id}
-	})
-	.then(function(user) {
-		res.render('userinfo', {user: user});
+	}).then(function(user) {
+		user.getGyms().then(function(gyms) {
+			res.render('userinfo', {gyms: gyms, user: user});
+		});
 	})
 })
 
@@ -77,14 +87,6 @@ app.get('/following', isLoggedIn, function(req, res) {
 		});
 	})
 })
-
-// app.post('/following', isLoggedIn, function(req, res) {
-// 	db.gym.create({
-// 		name: req.body.name
-// 	}).then(function() {
-// 		res.redirect('/following');
-// 	})
-// })
 
 app.post('/following', isLoggedIn, function(req, res) {
 	db.user.find({
@@ -109,11 +111,21 @@ app.delete('/following/:name', isLoggedIn, function(req, res) {
 	})
 })
 
+// app.get('/following/:name', isLoggedIn, function(req, res) {
+// 	db.gym.find({
+// 		where: {name: req.params.name}
+// 	}).then(function(gym) {
+// 		res.render('gyminfo', {gym: gym})
+// 	})
+// })
+
 app.get('/following/:name', isLoggedIn, function(req, res) {
-	db.gym.find({
+	db.gym.findOne({
 		where: {name: req.params.name}
 	}).then(function(gym) {
-		res.render('gyminfo', {gym: gym})
+		gym.getUsers().then(function(users) {
+			res.render('gyminfo', {users: users, gym: gym});
+		});
 	})
 })
 
