@@ -1,16 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var gym = sequelize.define('gym', {
+  var review = sequelize.define('review', {
+    content: DataTypes.STRING,
     name: DataTypes.STRING,
-    address: DataTypes.STRING
+    gymId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.gym.belongsToMany(models.user, {through: "usersGyms"});
-        models.gym.hasMany(models.review);
+        models.review.belongsTo(models.gym);
       }
     }
   });
-  return gym;
+  return review;
 };

@@ -124,11 +124,22 @@ app.delete('/following/:id', isLoggedIn, function(req, res) {
 
 app.get('/following/:id', isLoggedIn, function(req, res) {
 	db.gym.findOne({
-		where: {id: req.params.id}
+		where: {id: req.params.id},
+		include: [db.review]
 	}).then(function(gym) {
 		gym.getUsers().then(function(users) {
 			res.render('gyminfo', {users: users, gym: gym});
 		});
+	})
+})
+
+app.post('/following/:id/reviews', function(req, res) {
+	db.review.create({
+		content: req.body.content,
+		name: req.body.name,
+		gymId: req.params.id
+	}).then(function() {
+		res.redirect('/following/' + req.params.id);
 	})
 })
 
