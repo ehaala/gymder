@@ -1,12 +1,14 @@
-<h1>Gyms I follow...</h1>
+<div class='plainback' style="overflow:scroll;">
+	<h1>Gyms I follow...</h1>
 
-<div>
-	<% gyms.forEach(function(gym) {%>
-		<div class="following col-sm-4">
-		<a href="/following/<%= gym.id %>"><%= gym.name %></a>
-		<p><%= gym.address %></p>
-		<br>
-		<a href="/following/<%-gym.id %>" type="submit" class="btn btn-danger remove">Unfollow</a>
-		</div>
-	<% });%>
+	<div>
+		<% gyms.forEach(function(gym) {%>
+			<div class="following col-sm-4">
+			<a href="/following/<%= gym.id %>"><%= gym.name %></a>
+			<p><%= gym.address %></p>
+			<br>
+			<a href="/following/<%-gym.id %>" type="submit" class="btn btn-danger remove">Unfollow</a>
+			</div>
+		<% });%>
+	</div>
 </div>

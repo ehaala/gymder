@@ -11,7 +11,6 @@ html, body {
 
 h1 {
 	font-size: 48px;
-/*	font-family: "Sorts Mill Goudy";*/
 	text-shadow: 2px 2px black;
 }
 
@@ -36,10 +35,6 @@ textarea {
 	background: black;
 }
 
-th {
-	font-weight: bold;
-}
-
 .background {
 	background-image: url('../img/gym.jpg');
 	background-size: cover;
@@ -52,6 +47,12 @@ th {
 	background-size: cover;
 	height: 600px;
 	padding-top: 100px;
+}
+
+.plainback {
+	background: gray;
+	height: 600px;
+	padding-top: 20px;
 }
 
 .search {

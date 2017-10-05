@@ -7,6 +7,7 @@ Users can search for gyms in any area and find other people that follow the same
 * Alfred, a 23 year old runner, just moved to Seattle and wants to find gym buddies near him
 
 #### Planning ####
+
 ![Alt text](wireframes/home.png)
 ![Alt text](wireframes/results.png)
 ![Alt text](wireframes/gyminfo.png)
