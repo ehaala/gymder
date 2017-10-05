@@ -3,7 +3,9 @@
 
 	<h3>( <%= gym.address %> )</h3>
 
-	<h3>Followers:</h3>
+	<hr />
+
+	<h3>Followers</h3>
 	<div>
 		<% users.forEach(function(user) {%>
 			<div class="following">
@@ -14,20 +16,18 @@
 </div>
 
 <div class='col-sm-6'>
-	<form action='/following/<%= gym.id %>/reviews' method='POST'>
-		<textarea placeholder='Type Review...' name='content' cols='40' required></textarea>
-		<br>
-		<input type='text' placeholder='Name' name='name' required>
-		<button type='submit' class='btn btn-outline-success'>Add</button>
-	</form>
-
 	<h3>Reviews</h3>
 
 	<div id='reviews'>
 		<% gym.reviews.forEach(function(review) { %>
 			<p>"<%= review.content %>" - <%= review.name %></p>
 		<% }); %>
-
-		<a href="/">&larr; Back Home</a>
 	</div>
+
+	<form action='/following/<%= gym.id %>/reviews' method='POST'>
+		<textarea placeholder='Type Review...' name='content' cols='40' required></textarea>
+		<br>
+		<input type='text' placeholder='Name' name='name' required>
+		<button type='submit' class='btn btn-outline-success'>Add</button>
+	</form>
 </div>

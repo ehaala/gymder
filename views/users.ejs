@@ -1,13 +1,11 @@
-<h1>Community!</h1>
-
-<% users.forEach(function(user) { %>
-  <div class="user col-sm-4">
-    <h2>
-      <a href="/users/<%= user.id %>">
-        <%= user.name %>
-      </a>
-    </h2>
-  </div>
-<% }); %>
-
-<a href="/">&larr; Back Home</a>
+<div class='community col-sm-12'>
+	<% users.forEach(function(user) { %>
+	  <div class="user col-sm-4">
+	    <h2>
+	      <a href="/users/<%= user.id %>">
+	        <%= user.name %>
+	      </a>
+	    </h2>
+	  </div>
+	<% }); %>
+</div>

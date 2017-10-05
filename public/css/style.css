@@ -11,13 +11,16 @@ html, body {
 
 h1 {
 	font-size: 48px;
-	font-family: "Sorts Mill Goudy";
+/*	font-family: "Sorts Mill Goudy";*/
 	text-shadow: 2px 2px black;
-	text-decoration: underline;
 }
 
 h3 {
 	color: gray;
+}
+
+p {
+	font-size: .8em;
 }
 
 form {
@@ -44,6 +47,13 @@ th {
 	padding-top: 100px;
 }
 
+.community {
+	background-image: url('../img/community.jpg');
+	background-size: cover;
+	height: 600px;
+	padding-top: 100px;
+}
+
 .search {
 	display: inline-block;
 	opacity: .8;
@@ -62,11 +72,13 @@ th {
 
 .following {
 	margin-bottom: 20px;
+	height: 150px;
 }
 
 .user {
 	background: black;
-	height: 100px;
+	height: 75px;
+	opacity: .8;
 }
 
 .search {

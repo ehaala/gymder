@@ -5,7 +5,7 @@
 <p>Member of:</p>
 <div>
 	<% gyms.forEach(function(gym) {%>
-		<div class="following">
+		<div class="usergyms">
 		<a href="/following/<%-gym.id %>"><%= gym.name %></a>
 		</div>
 	<% });%>

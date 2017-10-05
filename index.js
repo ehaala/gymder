@@ -81,7 +81,7 @@ app.get('/following', isLoggedIn, function(req, res) {
 
 app.post('/following', isLoggedIn, function(req, res) {
 	db.user.find({
-		where: {name: req.user.name}
+		where: {id: req.user.id}
 	}).then(function(user) {
 		db.gym.findOrCreate({
 			where: {
