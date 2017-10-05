@@ -102,13 +102,13 @@ app.post('/following', isLoggedIn, function(req, res) {
 				//
 			})
 		})
+		res.redirect('/following');
 	})
-	res.redirect('/following');
 })
 
-app.delete('/following/:name', isLoggedIn, function(req, res) {
+app.delete('/following/:id', isLoggedIn, function(req, res) {
 	db.gym.destroy({
-		where: {name: req.params.name}
+		where: {id: req.params.id}
 	}).then(function() {
 		//
 	})
@@ -122,9 +122,9 @@ app.delete('/following/:name', isLoggedIn, function(req, res) {
 // 	})
 // })
 
-app.get('/following/:name', isLoggedIn, function(req, res) {
+app.get('/following/:id', isLoggedIn, function(req, res) {
 	db.gym.findOne({
-		where: {name: req.params.name}
+		where: {id: req.params.id}
 	}).then(function(gym) {
 		gym.getUsers().then(function(users) {
 			res.render('gyminfo', {users: users, gym: gym});

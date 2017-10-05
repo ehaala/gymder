@@ -3,9 +3,9 @@
 <div>
 	<% gyms.forEach(function(gym) {%>
 		<div class="following col-sm-4">
-		<a href="/following/<%= gym.name %>"><%= gym.name %></a>
+		<a href="/following/<%= gym.id %>"><%= gym.name %></a>
 		<br>
-		<a href="/following/<%-gym.name %>" type="submit" class="btn btn-danger remove">Unfollow</a>
+		<a href="/following/<%-gym.id %>" type="submit" class="btn btn-danger remove">Unfollow</a>
 		</div>
 	<% });%>
 </div>
