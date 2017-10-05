@@ -53,79 +53,6 @@ app.post('/search', function(req, res) {
 	})
 })
 
-app.get('/users', isLoggedIn, function(req, res) {
-	db.user.findAll().then(function(users) {
-		res.render('users', {users: users});
-	})
-})
-
-app.get('/users/:id', isLoggedIn, function(req, res) {
-	db.user.findOne({
-		where: {id: req.params.id}
-	}).then(function(user) {
-		user.getGyms().then(function(gyms) {
-			res.render('userinfo', {gyms: gyms, user: user});
-		});
-	})
-})
-
-app.get('/following', isLoggedIn, function(req, res) {
-	db.user.findOne({
-		where: {name: req.user.name}
-	}).then(function(user) {
-		user.getGyms().then(function(gyms) {
-			res.render('following', {gyms: gyms});
-		});
-	})
-})
-
-app.post('/following', isLoggedIn, function(req, res) {
-	db.user.find({
-		where: {id: req.user.id}
-	}).then(function(user) {
-		db.gym.findOrCreate({
-			where: {
-				name: req.body.name,
-				address: req.body.address
-			}
-		}).spread(function(gym, created) {
-			user.addGym(gym).then(function(gym) {
-				//
-			})
-		})
-		res.redirect('/following');
-	})
-})
-
-app.delete('/following/:id', isLoggedIn, function(req, res) {
-	db.gym.destroy({
-		where: {id: req.params.id}
-	}).then(function() {
-		//
-	})
-})
-
-app.get('/following/:id', isLoggedIn, function(req, res) {
-	db.gym.findOne({
-		where: {id: req.params.id},
-		include: [db.review]
-	}).then(function(gym) {
-		gym.getUsers().then(function(users) {
-			res.render('gyminfo', {users: users, gym: gym});
-		});
-	})
-})
-
-app.post('/following/:id/reviews', function(req, res) {
-	db.review.create({
-		content: req.body.content,
-		name: req.body.name,
-		gymId: req.params.id
-	}).then(function() {
-		res.redirect('/following/' + req.params.id);
-	})
-})
-
 app.get('/about', function(req, res) {
 	res.render('about');
 })
@@ -134,6 +61,8 @@ app.get('/profile', isLoggedIn, function(req, res) {
 	res.render('profile', {user: req.user});
 });
 
+app.use('/following', require('./controllers/following'));
+app.use('/users', require('./controllers/users'));
 app.use('/auth', require('./controllers/auth'));
 
 var server = app.listen(process.env.PORT || 3000);

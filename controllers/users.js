@@ -4,13 +4,13 @@ var router = express.Router();
 
 var isLoggedIn = require('../middleware/isLoggedIn');
 
-router.get('/users', isLoggedIn, function(req, res) {
+router.get('/', isLoggedIn, function(req, res) {
 	db.user.findAll().then(function(users) {
 		res.render('users', {users: users});
 	})
 })
 
-router.get('/users/:id', isLoggedIn, function(req, res) {
+router.get('/:id', isLoggedIn, function(req, res) {
 	db.user.findOne({
 		where: {id: req.params.id}
 	}).then(function(user) {
@@ -19,3 +19,5 @@ router.get('/users/:id', isLoggedIn, function(req, res) {
 		});
 	})
 })
+
+module.exports = router;

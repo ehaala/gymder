@@ -4,4 +4,10 @@
 
 <p>email: <%= user.email %></p>
 
+<form action='/users/<%= user.id %>/interests' method='POST'>
+	<textarea placeholder='Type Interest (ex: Running, Lifting, etc.)' name='interest' cols='40' required></textarea>
+	<br>
+	<button type='submit' class='btn btn-outline-success'>Add</button>
+</form>
+
 <a href="/">Home</a>

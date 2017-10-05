@@ -8,9 +8,9 @@ Users can search for gyms in any area and find other people that follow the same
 
 #### Planning ####
 
-![Alt text](wireframes/home.png)
-![Alt text](wireframes/results.png)
-![Alt text](wireframes/gyminfo.png)
+![Alt text](Wireframes/home.png)
+![Alt text](Wireframes/results.png)
+![Alt text](Wireframes/gyminfo.png)
 
 #### Tech Used ####
 * HTML
