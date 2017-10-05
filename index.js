@@ -59,15 +59,6 @@ app.get('/users', isLoggedIn, function(req, res) {
 	})
 })
 
-// app.get('/users/:id', isLoggedIn, function(req, res) {
-// 	db.user.find({
-// 		where: {id: req.params.id}
-// 	})
-// 	.then(function(user) {
-// 		res.render('userinfo', {user: user});
-// 	})
-// })
-
 app.get('/users/:id', isLoggedIn, function(req, res) {
 	db.user.findOne({
 		where: {id: req.params.id}
@@ -113,14 +104,6 @@ app.delete('/following/:id', isLoggedIn, function(req, res) {
 		//
 	})
 })
-
-// app.get('/following/:name', isLoggedIn, function(req, res) {
-// 	db.gym.find({
-// 		where: {name: req.params.name}
-// 	}).then(function(gym) {
-// 		res.render('gyminfo', {gym: gym})
-// 	})
-// })
 
 app.get('/following/:id', isLoggedIn, function(req, res) {
 	db.gym.findOne({

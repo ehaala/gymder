@@ -13,10 +13,11 @@ h1 {
 	font-size: 48px;
 	font-family: "Sorts Mill Goudy";
 	text-shadow: 2px 2px black;
+	text-decoration: underline;
 }
 
 h3 {
-	color: white;
+	color: gray;
 }
 
 form {
