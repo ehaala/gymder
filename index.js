@@ -93,7 +93,10 @@ app.post('/following', isLoggedIn, function(req, res) {
 		where: {name: req.user.name}
 	}).then(function(user) {
 		db.gym.findOrCreate({
-			where: {name: req.body.name}
+			where: {
+				name: req.body.name,
+				address: req.body.address
+			}
 		}).spread(function(gym, created) {
 			user.addGym(gym).then(function(gym) {
 				//

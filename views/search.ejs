@@ -4,6 +4,7 @@
       <p><%= gym.formatted_address %></p>
       <form method="POST" action="/following">
         <input hidden type="text" name="name" value="<%= gym.name %>">
+        <input hidden type="text" name="address" value="<%= gym.formatted_address %>">
         <button class="btn btn-primary" type="submit">Follow</button>
       </form>
     </div>
