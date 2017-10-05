@@ -45,7 +45,7 @@ app.get('/', function(req, res) {
 app.post('/search', function(req, res) {
 	var url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=gyms+in+';
 	var city = req.body.city;
-	var key = '&key=AIzaSyCQH1Sui6szIjsZDawHKRqomT-5liiLJU4';
+	var key = '&key='+ process.env.GOOGLE_KEY;
 	var fullurl = url + city + key;
 	request(fullurl, function(error, response, body) {
 		var gym = JSON.parse(body).results;
