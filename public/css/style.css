@@ -35,6 +35,10 @@ textarea {
 	background: black;
 }
 
+button {
+	background: gray;
+}
+
 .background {
 	background-image: url('../img/gym.jpg');
 	background-size: cover;
@@ -55,6 +59,18 @@ textarea {
 	padding-top: 20px;
 }
 
+.schedule {
+	background-image: url('../img/sticky.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 30px;
+	height: 300px;
+	font-family: "Permanent Marker";
+	font-size: 1.1em;
+	color: black;
+}
+
 .search {
 	display: inline-block;
 	opacity: .8;
@@ -69,6 +85,7 @@ textarea {
 	background-image: url('../img/woodback.jpg');
 	background-size: cover;
 	height: 250px;
+	opacity: .9;
 }
 
 .following {
