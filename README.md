@@ -18,7 +18,18 @@ Users can search for gyms in any area and find other people that follow the same
 Method | URL | Purpose
 ------ | --- | -------
 POST | /search | return a list of gyms based on search query
-
+GET | /profile | return the logged-in user's profile
+GET | /users | show all users
+GET | /users/:id | render info page for specific user
+POST | /users/:id/schedule | posts form data to user's schedule
+DELETE | /users/:id/schedule/:id | deletes schedule entry
+GET | /users/:id/schedule/:id/edit | renders edit form for schedule entry
+PUT | /users/:id/schedule/:id | updates schedule entry
+GET | /following | renders page of gyms that logged-in user is following
+POST | /following | finds or adds gym to user's following list
+DELETE | /following/:id | removes relationship between user and gym (unfollow)
+GET | /following/:id | renders gym info page
+POST | /following/:id/reviews | creates gym review from form data
 
 #### Tech Used ####
 * HTML
