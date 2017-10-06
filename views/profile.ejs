@@ -8,7 +8,8 @@
 
 <% user.schedules.forEach(function(schedule) { %>
 	<p><%= schedule.day %> - <%= schedule.time %>
-		<a href="/users/<%= user.id %>/schedule/<%= schedule.id %>" type="submit" class="delete">(Delete)</a>
+		<a href="/users/<%= user.id %>/schedule/<%= schedule.id %>" type="submit" class="delete">(Delete </a>/
+		<a href="/users/<%= user.id %>/schedule/<%= schedule.id %>/edit">Edit)</a>
 	</p>
 <% }); %>
 

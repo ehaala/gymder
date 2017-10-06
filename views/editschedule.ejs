@@ -1,0 +1,9 @@
+<div>
+    <form action="/users/<%= user.id %>/schedule/<%= schedule.id %>" method="put" class="put">
+        <p>Day:</p>
+        <input type="text" name="day" value="<%= schedule.day %>"/>
+        <p>Time:</p>
+        <input type="text" name="time" value="<%= schedule.time %>"/>
+        <button type="submit">Update</button>
+    </form>
+</div>

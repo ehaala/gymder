@@ -41,4 +41,24 @@ router.delete('/:id/schedule/:id', isLoggedIn, function(req, res) {
 	})
 })
 
+router.get('/:id/schedule/:id/edit', isLoggedIn, function(req, res) {
+	db.schedule.findOne({
+		where: {
+			id: req.params.id
+		}
+	}).then(function(schedule) {
+		res.render('editschedule', {schedule: schedule, user: req.user});
+	})
+})
+
+router.put('/:id/schedule/:id', function(req, res) {
+	db.schedule.findOne({
+		where: {
+			id: req.params.id
+		}
+	}).then(function(schedule) {
+		schedule.updateAttributes(req.body);
+	})
+})
+
 module.exports = router;

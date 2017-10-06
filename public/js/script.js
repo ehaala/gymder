@@ -29,3 +29,18 @@ $('document').ready(function() {
 		window.location = '/profile'
 	})
 })
+
+$('.put').on('submit', function(e) {
+    e.preventDefault();
+    var element = $(this);
+    var url = element.attr('action');
+    var formData = element.serialize();
+    $.ajax({
+        method: 'put',
+        url: url,
+        data: formData
+    }).done(function(data) {
+        console.log(data);
+    });
+    window.location = '/profile';
+});

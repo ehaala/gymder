@@ -1,6 +1,12 @@
 <div class='col-sm-6'>
 	<h1><%= gym.name %></h1>
 
+	<form method="POST" action="/following">
+		<input hidden type="text" name="name" value="<%= gym.name %>">
+		<input hidden type="text" name="address" value="<%= gym.address %>">
+		<button class="btn btn-primary" type="submit">Follow</button>
+	</form>
+
 	<h3>( <%= gym.address %> )</h3>
 
 	<hr />
