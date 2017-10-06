@@ -58,7 +58,14 @@ app.get('/about', function(req, res) {
 })
 
 app.get('/profile', isLoggedIn, function(req, res) {
-	res.render('profile', {user: req.user});
+	db.user.findOne({
+		where: {id: req.user.id},
+		include: [db.schedule]
+	}).then(function(user) {
+		user.getSchedules().then(function(schedule) {
+			res.render('profile', {schedule: schedule, user: user});
+		});
+	})
 });
 
 app.use('/following', require('./controllers/following'));

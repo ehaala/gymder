@@ -4,9 +4,17 @@
 
 <p>email: <%= user.email %></p>
 
-<form action='/users/<%= user.id %>/interests' method='POST'>
-	<textarea placeholder='Type Interest (ex: Running, Lifting, etc.)' name='interest' cols='40' required></textarea>
-	<br>
+<h3>Post your gym schedule below for other users to see!</h3>
+
+<% user.schedules.forEach(function(schedule) { %>
+	<p><%= schedule.day %> - <%= schedule.time %>
+		<a href="/users/<%= user.id %>/schedule/<%= schedule.id %>" type="submit" class="delete">(Delete)</a>
+	</p>
+<% }); %>
+
+<form action='/users/<%= user.id %>/schedule' method='POST'>
+	<input type='text' placeholder='Days (ex: M, W, F)' name='day' required>
+	<input type='text' placeholder='Time (ex: 7pm)' name='time' required>
 	<button type='submit' class='btn btn-outline-success'>Add</button>
 </form>
 

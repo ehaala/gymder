@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       associate: function(models) {
         // associations can be defined here
         models.user.belongsToMany(models.gym, {through: "usersGyms"});
+        models.user.hasMany(models.schedule);
       }
     },
     instanceMethods: {

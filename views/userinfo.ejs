@@ -1,16 +1,25 @@
-<h1><%= user.name %></h1>
+<div class='col-sm-6'>
+	<h1><%= user.name %></h1>
 
-<p>( <%= user.email %> )</p>
+	<p>( <%= user.email %> )</p>
 
-<p>Following:</p>
-<div>
-	<% gyms.forEach(function(gym) {%>
-		<div class="usergyms">
-		<a href="/following/<%-gym.id %>"><%= gym.name %></a>
-		</div>
-	<% });%>
+	<h3>Following:</h3>
+	<div>
+		<% gyms.forEach(function(gym) {%>
+			<div class="usergyms">
+			<a href="/following/<%-gym.id %>"><%= gym.name %></a>
+			</div>
+		<% });%>
+	</div>
+
+	<hr />
+
+	<a href="/users">&larr; Back to all users</a>
 </div>
 
-<hr />
-
-<a href="/users">&larr; Back to all users</a>
+<div class='col-sm-6'>
+	<h3>Schedule</h3>
+	<% user.schedules.forEach(function(schedule) { %>
+		<p><%= schedule.day %> - <%= schedule.time %></p>
+	<% }); %>
+</div>
