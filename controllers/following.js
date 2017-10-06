@@ -33,8 +33,11 @@ router.post('/', isLoggedIn, function(req, res) {
 })
 
 router.delete('/:id', isLoggedIn, function(req, res) {
-	db.gym.destroy({
-		where: {id: req.params.id}
+	db.usersGyms.destroy({
+		where: {
+			gymId: req.params.id,
+			userId: req.user.id
+		}
 	}).then(function() {
 		//
 	})
