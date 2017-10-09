@@ -11,8 +11,8 @@ router.get('/', isLoggedIn, function(req, res) {
 		user.getGyms().then(function(gyms) {
 			res.render('following', {gyms: gyms});
 		});
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -30,8 +30,8 @@ router.post('/', isLoggedIn, function(req, res) {
 				res.redirect('/following');
 			})
 		})
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -41,8 +41,8 @@ router.delete('/:id', isLoggedIn, function(req, res) {
 			gymId: req.params.id,
 			userId: req.user.id
 		}
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -54,8 +54,8 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		gym.getUsers().then(function(users) {
 			res.render('gyminfo', {users: users, gym: gym});
 		});
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -66,8 +66,8 @@ router.post('/:id/reviews', function(req, res) {
 		gymId: req.params.id
 	}).then(function() {
 		res.redirect('/following/' + req.params.id);
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 

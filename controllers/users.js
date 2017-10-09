@@ -7,8 +7,8 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 router.get('/', isLoggedIn, function(req, res) {
 	db.user.findAll().then(function(users) {
 		res.render('users', {users: users});
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -20,8 +20,8 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		user.getGyms().then(function(gyms) {
 			res.render('userinfo', {gyms: gyms, user: user});
 		});
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -32,8 +32,8 @@ router.post('/:id/schedule', isLoggedIn, function(req, res) {
 		userId: req.user.id
 	}).then(function() {
 		res.redirect('/profile');
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -42,8 +42,8 @@ router.delete('/:id/schedule/:id', isLoggedIn, function(req, res) {
 		where: {
 			id: req.params.id,
 		}
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -54,8 +54,8 @@ router.get('/:id/schedule/:id/edit', isLoggedIn, function(req, res) {
 		}
 	}).then(function(schedule) {
 		res.render('editschedule', {schedule: schedule, user: req.user});
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
@@ -66,8 +66,8 @@ router.put('/:id/schedule/:id', function(req, res) {
 		}
 	}).then(function(schedule) {
 		schedule.updateAttributes(req.body);
-	}).catch(function(err) {
-    	res.status(500).render('error');
+	}).catch(function(error) {
+    	res.status(400).render('404');
   	});
 })
 
