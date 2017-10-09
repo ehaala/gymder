@@ -10,7 +10,8 @@ html, body {
 }
 
 h1 {
-	font-size: 48px;
+	font-family: 'Permanent Marker';
+	font-size: 2em;
 	text-shadow: 2px 2px black;
 }
 
@@ -94,11 +95,20 @@ button {
 }
 
 .user {
-	background: black;
 	height: 75px;
-	opacity: .8;
+/*	background: black;
+	opacity: .8;*/
+}
+
+h2 a {
+	color: black;
+	font-family: 'Permanent Marker';
 }
 
 .search {
 	background: black;
+}
+
+#personal {
+	padding: 40px;
 }

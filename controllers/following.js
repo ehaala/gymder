@@ -25,10 +25,9 @@ router.post('/', isLoggedIn, function(req, res) {
 			}
 		}).spread(function(gym, created) {
 			user.addGym(gym).then(function(gym) {
-				//
+				res.redirect('/following');
 			})
 		})
-		res.redirect('/following');
 	})
 })
 
