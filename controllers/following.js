@@ -11,7 +11,9 @@ router.get('/', isLoggedIn, function(req, res) {
 		user.getGyms().then(function(gyms) {
 			res.render('following', {gyms: gyms});
 		});
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.post('/', isLoggedIn, function(req, res) {
@@ -28,7 +30,9 @@ router.post('/', isLoggedIn, function(req, res) {
 				res.redirect('/following');
 			})
 		})
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.delete('/:id', isLoggedIn, function(req, res) {
@@ -37,9 +41,9 @@ router.delete('/:id', isLoggedIn, function(req, res) {
 			gymId: req.params.id,
 			userId: req.user.id
 		}
-	}).then(function() {
-		//
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.get('/:id', isLoggedIn, function(req, res) {
@@ -50,7 +54,9 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		gym.getUsers().then(function(users) {
 			res.render('gyminfo', {users: users, gym: gym});
 		});
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.post('/:id/reviews', function(req, res) {
@@ -60,7 +66,9 @@ router.post('/:id/reviews', function(req, res) {
 		gymId: req.params.id
 	}).then(function() {
 		res.redirect('/following/' + req.params.id);
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 module.exports = router;

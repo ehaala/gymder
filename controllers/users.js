@@ -7,7 +7,9 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 router.get('/', isLoggedIn, function(req, res) {
 	db.user.findAll().then(function(users) {
 		res.render('users', {users: users});
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.get('/:id', isLoggedIn, function(req, res) {
@@ -18,7 +20,9 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		user.getGyms().then(function(gyms) {
 			res.render('userinfo', {gyms: gyms, user: user});
 		});
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.post('/:id/schedule', isLoggedIn, function(req, res) {
@@ -28,7 +32,9 @@ router.post('/:id/schedule', isLoggedIn, function(req, res) {
 		userId: req.user.id
 	}).then(function() {
 		res.redirect('/profile');
-	});
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.delete('/:id/schedule/:id', isLoggedIn, function(req, res) {
@@ -36,9 +42,9 @@ router.delete('/:id/schedule/:id', isLoggedIn, function(req, res) {
 		where: {
 			id: req.params.id,
 		}
-	}).then(function() {
-		//
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.get('/:id/schedule/:id/edit', isLoggedIn, function(req, res) {
@@ -48,7 +54,9 @@ router.get('/:id/schedule/:id/edit', isLoggedIn, function(req, res) {
 		}
 	}).then(function(schedule) {
 		res.render('editschedule', {schedule: schedule, user: req.user});
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 router.put('/:id/schedule/:id', function(req, res) {
@@ -58,7 +66,9 @@ router.put('/:id/schedule/:id', function(req, res) {
 		}
 	}).then(function(schedule) {
 		schedule.updateAttributes(req.body);
-	})
+	}).catch(function(err) {
+    	res.status(500).render('error');
+  	});
 })
 
 module.exports = router;
