@@ -4,7 +4,7 @@ Users can search for gyms in any area and find other people that follow the same
 
 #### User Stories ####
 * Mr. Potato Head, a 36 year old inactive male, wants to find a gym near him with good reviews
-* Alfred, a 23 year old runner, just moved to Seattle and wants to find a gym buddy near him that has a similar schedule
+* Jessica, a 23 year old runner, just moved to Seattle and wants to find a gym buddy near her that has a similar schedule
 * Walter, a 45 year old business man, travels frequently and needs to find quality gyms in a variety of cities
 
 #### Planning ####
@@ -44,3 +44,5 @@ POST | /following/:id/reviews | creates gym review from form data
 
 #### Next Steps ####
 * add friend feature so users can connect with one another
+* add user preferences such as lifting, running, etc. so that users can find other people with similar interests
+* add more profile customization (profile pic, bio)

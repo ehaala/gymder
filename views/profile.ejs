@@ -2,7 +2,6 @@
 	<h2>Profile</h2>
 	<p>name: <%= user.name %></p>
 	<p>email: <%= user.email %></p>
-	<a href="/">Home</a>
 </div>
 
 <div class='col-sm-8'>
@@ -18,4 +17,6 @@
 			<a href="/users/<%= user.id %>/schedule/<%= schedule.id %>/edit">Edit)</a>
 		</p>
 	<% }); %>
+	<hr />
+	<a href="/">Home</a>
 </div>

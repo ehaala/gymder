@@ -96,8 +96,6 @@ button {
 
 .user {
 	height: 75px;
-/*	background: black;
-	opacity: .8;*/
 }
 
 h2 a {
@@ -107,6 +105,11 @@ h2 a {
 
 .search {
 	background: black;
+}
+
+.form-control {
+	background: black;
+	color: white;
 }
 
 #personal {
