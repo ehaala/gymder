@@ -66,6 +66,8 @@ router.put('/:id/schedule/:id', function(req, res) {
 		}
 	}).then(function(schedule) {
 		schedule.updateAttributes(req.body);
+	}).then(function() {
+		res.redirect('/profile');
 	}).catch(function(error) {
     	res.status(400).render('404');
   	});
