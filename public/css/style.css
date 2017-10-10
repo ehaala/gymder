@@ -82,11 +82,17 @@ button {
 	border: none;
 }
 
+.profilepic {
+	border-radius: 50%;
+}
+
 .well {
 	background-image: url('../img/woodback.jpg');
 	background-size: cover;
 	height: 250px;
 	opacity: .9;
+	border: solid black 1px;
+	border-radius: 0;
 }
 
 .following {
