@@ -10,4 +10,9 @@
       </form>
     </div>
   <% }); %>
+	<% if(gym.length === 0) {%>
+		<div class="well col-sm-12">
+			<h1>No results found. Please try searching with a city or zip code.</h1>
+		</div>
+	<% } %>
 <div>
